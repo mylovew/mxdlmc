@@ -23,6 +23,7 @@
               <el-icon v-if="item.icon === 'home'" size="20"><HomeFilled /></el-icon>
               <el-icon v-if="item.icon === 'info'" size="20"><InfoFilled /></el-icon>
               <el-icon v-if="item.icon === 'conn'" size="20"><Connection /></el-icon>
+              <el-icon v-if="item.icon === 'menu'" size="20"><Menu /></el-icon>
               <span class="card-title text-base font-bold">&nbsp;&nbsp;{{ item.name }}</span>
             </div>
           </div>
@@ -35,6 +36,7 @@
               <el-icon v-if="item.icon === 'home'" size="20"><HomeFilled /></el-icon>
               <el-icon v-if="item.icon === 'info'" size="20"><InfoFilled /></el-icon>
               <el-icon v-if="item.icon === 'conn'" size="20"><Connection /></el-icon>
+              <el-icon v-if="item.icon === 'menu'" size="20"><Menu /></el-icon>
               <span class="card-title text-base font-bold">&nbsp;&nbsp;{{ item.name }}</span>
             </div>
           </div>
@@ -85,6 +87,7 @@
                 <el-icon v-if="item.icon === 'home'" size="20"><HomeFilled /></el-icon>
                 <el-icon v-if="item.icon === 'info'" size="20"><InfoFilled /></el-icon>
                 <el-icon v-if="item.icon === 'conn'" size="20"><Connection /></el-icon>
+                <el-icon v-if="item.icon === 'menu'" size="20"><Menu /></el-icon>
                 <span class="card-title text-base font-bold">&nbsp;&nbsp;{{ item.name }}</span>
               </div>
             </div>
@@ -97,9 +100,8 @@
                 <el-icon v-if="item.icon === 'home'" size="20"><HomeFilled /></el-icon>
                 <el-icon v-if="item.icon === 'info'" size="20"><InfoFilled /></el-icon>
                 <el-icon v-if="item.icon === 'conn'" size="20"><Connection /></el-icon>
-                <span v-else class="card-title text-base font-bold">
-                  &nbsp;&nbsp;{{ item.name }}
-                </span>
+                <el-icon v-if="item.icon === 'menu'" size="20"><Menu /></el-icon>
+                <span class="card-title text-base font-bold">&nbsp;&nbsp;{{ item.name }}</span>
               </div>
             </div>
           </li>
@@ -148,7 +150,7 @@
 </template>
 <script setup>
 import { onMounted, ref } from 'vue'
-import { HomeFilled, InfoFilled, Connection } from '@element-plus/icons-vue'
+import { HomeFilled, InfoFilled, Connection, Menu } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { useClipboard } from '@vueuse/core'
 import { useRouter } from 'vue-router'
@@ -165,6 +167,11 @@ const copyText = () => {
 //跳转 router
 const jump = (path) => {
   menuIsOpen.value = false
+  if (path.indexOf('http') === 0) {
+    //跳转外链
+    window.open(path)
+    return
+  }
   router.push(path)
 }
 
@@ -183,6 +190,11 @@ const menuTop = ref([
     name: '服务器地址',
     icon: 'conn',
     path: '/home'
+  },
+  {
+    name: '玩法教程',
+    icon: 'menu',
+    path: 'https://www.yuque.com/u55930110/tdsxeq/oi9mwgttey95rias?singleDoc#'
   }
 ])
 
