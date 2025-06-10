@@ -1,0 +1,5 @@
+# Ignore artifacts:
+es
+lib
+dist
+node_modules
