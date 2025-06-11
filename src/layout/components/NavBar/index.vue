@@ -155,7 +155,7 @@ import { ElMessage } from 'element-plus'
 import { useClipboard } from '@vueuse/core'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-const source = ref('mldlmc.top')
+const source = ref('mxdlmc.top')
 const { text, copy, copied, isSupported } = useClipboard({ source })
 
 const copyText = () => {
