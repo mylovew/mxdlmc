@@ -194,7 +194,7 @@ const menuTop = ref([
   {
     name: '玩法教程',
     icon: 'menu',
-    path: 'https://www.yuque.com/u55930110/tdsxeq/oi9mwgttey95rias?singleDoc#'
+    path: 'https://www.yuque.com/u55930110/tdsxeq'
   }
 ])
 
