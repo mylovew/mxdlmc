@@ -3,12 +3,12 @@ export const Layout = () => import('@/layout/index.vue')
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/test'
   },
-  // {
-  //   path: '/test',
-  //   component: () => import('@/views/test/index.vue')
-  // },
+  {
+    path: '/test',
+    component: () => import('@/views/test/index.vue')
+  },
   {
     path: '/home',
     component: Layout,

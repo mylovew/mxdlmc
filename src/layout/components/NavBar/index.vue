@@ -154,6 +154,11 @@ import { HomeFilled, InfoFilled, Connection, Menu } from '@element-plus/icons-vu
 import { ElMessage } from 'element-plus'
 import { useClipboard } from '@vueuse/core'
 import { useRouter } from 'vue-router'
+import { useInfoConfigStore } from '@/store/modules/infoConfig.js'
+import { storeToRefs } from 'pinia'
+const infoConfigStore = useInfoConfigStore()
+const { infoConfig } = storeToRefs(infoConfigStore)
+console.log('2', infoConfig.value.footer)
 const router = useRouter()
 const source = ref('mxdlmc.top')
 const { text, copy, copied, isSupported } = useClipboard({ source })
