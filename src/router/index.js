@@ -3,7 +3,7 @@ export const Layout = () => import('@/layout/index.vue')
 const routes = [
   {
     path: '/',
-    redirect: '/test'
+    redirect: '/home'
   },
   {
     path: '/test',

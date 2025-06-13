@@ -1,8 +1,87 @@
 {
-  "menuList":[],
-  "bannerList":[],
-  "sceneryList":[],
-  "footer":{
-    "mdUrl":"111111"
+  "logo": "/img/logo/logo.png",
+  "logoFont": "/img/logo/logo_font.png",
+  "menu":[
+    {
+      "name": "首页",
+      "icon": "HomeFilled",
+      "type": "link",
+      "path": "/home"
+    },
+    {
+      "name": "服务器细则",
+      "icon": "InfoFilled",
+      "type": "link",
+      "path": "/readme"
+    },
+    {
+      "name": "服务器地址",
+      "icon": "Connection",
+      "type": "copy",
+      "copyText": "mxdlmc.top",
+      "copySuccessMessage": "服务器地址已复制到剪切板!"
+    },
+    {
+      "name": "玩法教程",
+      "icon": "Menu",
+      "type": "external-link",
+      "url": "https://www.yuque.com/u55930110/tdsxeq"
+    }
+  ],
+  "banner":[
+    "/img/banner/1.png",
+    "/img/banner/2.png",
+    "/img/banner/3.png",
+    "/img/banner/4.png"
+  ],
+  "scenery":{
+    "title": "服务器风景",
+    "imgUrls":[
+      "/img/scenery/1.png",
+      "/img/scenery/2.png",
+      "/img/scenery/3.png",
+      "/img/scenery/4.png",
+      "/img/scenery/5.png",
+      "/img/scenery/6.png"
+    ]
+  },
+  "cardInfo":{
+    "title": "服务器介绍",
+    "info": [
+      {
+        "title": "服务器介绍",
+        "content": "MCMMO，副本，星露谷，时装宠物，更多附魔，玩家公会等等",
+        "imgUrl": "/img/card/1.png"
+      },
+      {
+        "title": "服务器配置",
+        "content": "7950x整机+1T固态+64GB内存+100mbps带宽",
+        "imgUrl": "/img/card/2.png"
+      },
+      {
+        "title": "服务器宗旨",
+        "content": "我们的宗旨是-不删档-不跑路-无神权",
+        "imgUrl": "/img/card/3.png"
+      }
+    ]
+  },
+  "joinInfo": {
+    "title": "加入我们",
+    "info": [
+      {
+        "title": "QQ群：963649113",
+        "content": "申请加群：<a class=\"link\" target=\"_blank\" href=\"https://qm.qq.com/q/S9gT281OGk\">一键加群</a>",
+        "imgUrl": "/img/join/qq.png"
+      },
+      {
+        "title": "哔哩哔哩：官方号",
+        "content": "去关注：<a class=\"link\" target=\"_blank\" href=\"https://space.bilibili.com/123000034\">哔哩哔哩官方账号</a>",
+        "imgUrl": "/img/join/bilibili.png"
+      }
+    ]
+  },
+  "footerInfo":{
+    "content": ["QQ群：963649113","服务器永久IP：mxdlmc.top","支持离线用户玩家，无白名单无需审核 IP直连"],
+    "copyright": "Copyright © 2023-2025 mxdlmc.top All Rights Reserved."
   }
 }

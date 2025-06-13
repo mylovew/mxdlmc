@@ -13,31 +13,14 @@
     <div class="drawer-side z-10 drawer-end" :class="{ 'drawer-open': menuIsOpen }">
       <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
       <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-        <li class="m-2" v-for="(item, index) in menuTop" :key="index">
+        <li class="m-2" v-for="(item, index) in infoConfig.menu" :key="index">
           <div
-            v-if="item.icon === 'conn'"
-            @click="copyText"
+            @click="jump(item)"
             class="rainbow-card card max-w-40 h-12 bg-base-200 shadow-xl rounded-1xl overflow-hidden"
           >
             <div class="w-full flex items-center h-100">
-              <el-icon v-if="item.icon === 'home'" size="20"><HomeFilled /></el-icon>
-              <el-icon v-if="item.icon === 'info'" size="20"><InfoFilled /></el-icon>
-              <el-icon v-if="item.icon === 'conn'" size="20"><Connection /></el-icon>
-              <el-icon v-if="item.icon === 'menu'" size="20"><Menu /></el-icon>
-              <span class="card-title text-base font-bold">&nbsp;&nbsp;{{ item.name }}</span>
-            </div>
-          </div>
-          <div
-            v-else
-            @click="jump(item.path)"
-            class="rainbow-card card max-w-40 h-12 bg-base-200 shadow-xl rounded-1xl overflow-hidden"
-          >
-            <div class="w-full flex items-center h-100">
-              <el-icon v-if="item.icon === 'home'" size="20"><HomeFilled /></el-icon>
-              <el-icon v-if="item.icon === 'info'" size="20"><InfoFilled /></el-icon>
-              <el-icon v-if="item.icon === 'conn'" size="20"><Connection /></el-icon>
-              <el-icon v-if="item.icon === 'menu'" size="20"><Menu /></el-icon>
-              <span class="card-title text-base font-bold">&nbsp;&nbsp;{{ item.name }}</span>
+              <component :is="item.icon" class="w-5"></component>
+              <span class="text-base font-bold">&nbsp;{{ item.name }}</span>
             </div>
           </div>
         </li>
@@ -48,7 +31,7 @@
     <div class="navbar bg-base-300 shadow-lg rounded-xl h-24">
       <div class="navbar-start">
         <div class="dropdown" @click="menuOpen()">
-          <div tabindex="0" role="button" class="btn btn-ghost sm:hidden">
+          <div tabindex="0" role="button" class="btn btn-ghost md:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
@@ -64,57 +47,33 @@
               />
             </svg>
           </div>
-          <div class="ml-2 hidden sm:flex">
+          <div class="ml-2 hidden md:flex">
             <div class="avatar mr-2">
               <div class="mask rounded-xl w-10">
-                <img src="@/assets/logo/logo.png" />
+                <img :src="infoConfig.logo" />
               </div>
             </div>
-            <!--            <a class="card-title text-base font-bold">冒险大陆</a>-->
           </div>
         </div>
       </div>
 
-      <div class="navbar-center hidden sm:flex">
+      <div class="navbar-center hidden md:flex">
         <ul class="menu menu-horizontal">
-          <li class="m-2" v-for="(item, index) in menuTop" :key="index">
+          <li class="m-2" v-for="(item, index) in infoConfig.menu" :key="index">
             <div
-              v-if="item.icon === 'conn'"
-              @click="copyText"
+              @click="jump(item)"
               class="rainbow-card card max-w-40 h-12 bg-base-200 shadow-xl rounded-1xl overflow-hidden"
             >
-              <div class="w-full flex items-center justify-center text-center h-100">
-                <el-icon v-if="item.icon === 'home'" size="20"><HomeFilled /></el-icon>
-                <el-icon v-if="item.icon === 'info'" size="20"><InfoFilled /></el-icon>
-                <el-icon v-if="item.icon === 'conn'" size="20"><Connection /></el-icon>
-                <el-icon v-if="item.icon === 'menu'" size="20"><Menu /></el-icon>
-                <span class="card-title text-base font-bold">&nbsp;&nbsp;{{ item.name }}</span>
-              </div>
-            </div>
-            <div
-              v-else
-              @click="jump(item.path)"
-              class="rainbow-card card max-w-40 h-12 bg-base-200 shadow-xl rounded-1xl overflow-hidden"
-            >
-              <div class="w-full flex items-center justify-center text-center h-100">
-                <el-icon v-if="item.icon === 'home'" size="20"><HomeFilled /></el-icon>
-                <el-icon v-if="item.icon === 'info'" size="20"><InfoFilled /></el-icon>
-                <el-icon v-if="item.icon === 'conn'" size="20"><Connection /></el-icon>
-                <el-icon v-if="item.icon === 'menu'" size="20"><Menu /></el-icon>
-                <span class="card-title text-base font-bold">&nbsp;&nbsp;{{ item.name }}</span>
+              <div class="w-full flex items-center h-100">
+                <component :is="item.icon" class="w-5"></component>
+                <span class="text-base font-bold">&nbsp;{{ item.name }}</span>
               </div>
             </div>
           </li>
         </ul>
       </div>
-      <div class="navbar-center sm:hidden">
-        <!--        <div class="avatar mr-2">-->
-        <!--          <div class="mask mask-squircle w-10">-->
-        <!--            <img src="@/assets/logo/logo.png" />-->
-        <!--          </div>-->
-        <!--        </div>-->
-        <!--        <a class="card-title text-2xl font-bold">冒险大陆</a>-->
-        <img class="w-30" src="@/assets/logo/logo_font.png" />
+      <div class="navbar-center md:hidden">
+        <img class="w-30" :src="infoConfig.logoFont" />
       </div>
       <div class="navbar-end">
         <!-- 主题切换开关 -->
@@ -158,55 +117,28 @@ import { useInfoConfigStore } from '@/store/modules/infoConfig.js'
 import { storeToRefs } from 'pinia'
 const infoConfigStore = useInfoConfigStore()
 const { infoConfig } = storeToRefs(infoConfigStore)
-console.log('2', infoConfig.value.footer)
 const router = useRouter()
 const source = ref('mxdlmc.top')
 const { text, copy, copied, isSupported } = useClipboard({ source })
 
-const copyText = () => {
-  copy(source.value)
-  menuIsOpen.value = false
-  ElMessage.success('服务器地址已复制到剪切板!')
-}
-
 //跳转 router
-const jump = (path) => {
+const jump = (item) => {
   menuIsOpen.value = false
-  if (path.indexOf('http') === 0) {
-    //跳转外链
-    window.open(path)
-    return
+  if (item.type === 'external-link') {
+    window.open(item.url)
   }
-  router.push(path)
+  if (item.type === 'copy') {
+    copy(item.copyText)
+    ElMessage.success(item.copySuccessMessage)
+  }
+  if (item.type === 'link') {
+    router.push(item.path)
+  }
 }
-
-const menuTop = ref([
-  {
-    name: '首页',
-    icon: 'home',
-    path: '/home'
-  },
-  {
-    name: '服务器细则',
-    icon: 'info',
-    path: '/readme'
-  },
-  {
-    name: '服务器地址',
-    icon: 'conn',
-    path: '/home'
-  },
-  {
-    name: '玩法教程',
-    icon: 'menu',
-    path: 'https://www.yuque.com/u55930110/tdsxeq'
-  }
-])
 
 //菜单
 const menuIsOpen = ref(false)
 const menuOpen = () => {
-  console.log('menuOpen')
   menuIsOpen.value = true
 }
 const isDark = ref(false)
@@ -215,7 +147,6 @@ const isDark = ref(false)
 const initTheme = () => {
   // 从localStorage获取保存的主题设置
   const savedTheme = localStorage.getItem('theme')
-
   if (savedTheme) {
     // 如果有保存的主题设置，使用它
     isDark.value = savedTheme === 'dark'
@@ -223,7 +154,6 @@ const initTheme = () => {
     // 如果没有保存的设置，检查系统偏好
     isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
   }
-
   // 应用主题到HTML元素
   applyTheme()
 }
@@ -241,10 +171,8 @@ const applyTheme = () => {
 // 切换主题
 const toggleTheme = () => {
   isDark.value = !isDark.value
-
   // 保存到localStorage
   localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
-
   // 应用主题
   applyTheme()
 }
@@ -259,7 +187,6 @@ const watchSystemTheme = () => {
     }
   })
 }
-
 // 组件挂载时初始化
 onMounted(() => {
   initTheme()

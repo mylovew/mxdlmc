@@ -5,11 +5,16 @@ export const useInfoConfigStore = defineStore(
   'infoConfig',
   () => {
     const infoConfig = ref({
-      menuList: [],
-      bannerList: [],
-      sceneryList: [],
-      footer: {
-        mdUrl: ''
+      lofo: '',
+      logoFont: '',
+      menu: [],
+      banner: [],
+      scenery: { title: '', imgUrls: [] },
+      cardInfo: { title: '', info: [{ title: '', content: '', imgUrl: '' }] },
+      joinInfo: { title: '', info: [{ title: '', content: '', imgUrl: '' }] },
+      footerInfo: {
+        content: '',
+        copyright: ''
       }
     })
 

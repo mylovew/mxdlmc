@@ -6,9 +6,4 @@
 
 <script setup></script>
 
-<style scoped>
-.app-main {
-  position: relative;
-  overflow-y: auto;
-}
-</style>
+<style scoped></style>
