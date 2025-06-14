@@ -20,7 +20,7 @@ export const useInfoConfigStore = defineStore(
 
     const loadInfoConfig = async () => {
       try {
-        const response = await fetch('/config.json')
+        const response = await fetch('/config.json?t=' + new Date().getTime())
         if (!response.ok) {
           console.error('Network response was not ok')
         }
